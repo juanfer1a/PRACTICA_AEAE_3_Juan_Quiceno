@@ -1,0 +1,47 @@
+﻿@*
+    Index Empleado
+*@
+
+@{
+    ViewData["Title"] = "Empleado";
+}
+
+@model List<Tblempleado>
+
+
+<div class="container">
+    <h2>Dark Striped Table</h2>
+    <p>Combine .table-dark and .table-striped to create a dark, striped table:</p>
+    <div div="well"><a class="btn btn-secondary">NUEVO</a></div>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>NOMBRE</th>
+                <th>DOCUMENTO</th>
+                <th>DIRECCION</th>
+                <th>TELEFONO</th>
+                <th>EMAIL</th>
+                <th>ACCIONES</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+
+                <tr>
+                    <td>@item.StrNombre</td>
+                    <td>@item.NumDocumento</td>
+                    <td>@item.StrDireccion</td>
+                    <td>@item.StrTelefono</td>
+                    <td>@item.StrEmail</td>
+                    <td><a class="btn btn-info">EDITAR</a> <a class="btn btn-danger">BORRAR</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

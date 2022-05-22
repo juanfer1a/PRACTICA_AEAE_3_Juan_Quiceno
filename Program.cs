@@ -1,7 +1,15 @@
+﻿using Microsoft.EntityFrameworkCore;
+using PRACTICA_AEAE_3_Juan_Quiceno.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<FACTURASContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL"));
+});
 
 var app = builder.Build();
 

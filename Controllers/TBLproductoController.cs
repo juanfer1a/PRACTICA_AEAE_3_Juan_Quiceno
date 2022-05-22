@@ -1,83 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PRACTICA_AEAE_3_Juan_Quiceno.Models;
 
 namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
 {
-    public class TBLproductoController : Controller
+    public class TblProductoController : Controller
     {
-        // GET: TBLproductoController
-        public ActionResult Producto()
-        {
-            return View();
-        }
+        private readonly FACTURASContext _context;
 
-        // GET: TBLproductoController/Details/5
-        public ActionResult Details(int id)
+        public TblProductoController(FACTURASContext context)
         {
-            return View();
+            _context = context;
         }
-
-        // GET: TBLproductoController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: TBLproductoController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: TBLproductoController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: TBLproductoController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: TBLproductoController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: TBLproductoController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        public async Task<ActionResult> Index()
+        => View(await _context.Tblproductos.ToListAsync());
+        
     }
 }
