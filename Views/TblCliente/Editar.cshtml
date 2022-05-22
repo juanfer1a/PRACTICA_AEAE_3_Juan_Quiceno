@@ -1,0 +1,61 @@
+﻿@model Tblcliente
+
+
+
+<div class="container">
+    <h2>Modificar cliente</h2>
+</div>
+
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"> </div>            
+                <label hidden asp-for="IdCliente"></label>
+                <input type="hidden" asp-for="IdCliente" class="form-control" />         
+            
+            <div class="form-group">
+                <label asp-for="StrNombre" class="control-label"></label>
+                <input asp-for="StrNombre" class="form-control" />                
+                <span asp-validation-for="StrNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumDocumento" class="control-label"></label>
+                <input asp-for="NumDocumento" class="form-control" />
+                <span asp-validation-for="NumDocumento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrDireccion" class="control-label"></label>
+                <input asp-for="StrDireccion" class="form-control" />
+                <span asp-validation-for="StrDireccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrTelefono" class="control-label"></label>
+                <input asp-for="StrTelefono" class="form-control" />
+                <span asp-validation-for="StrTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrEmail" class="control-label"></label>
+                <input asp-for="StrEmail" class="form-control" />
+                <span asp-validation-for="StrEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a class="btn btn-primary" href="~/TBLcliente">Volver</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
