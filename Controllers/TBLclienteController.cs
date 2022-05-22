@@ -14,9 +14,8 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
             _context = context;
         }
 
-        public async Task<ActionResult> Index()        
+        public async Task<ActionResult> Index()
          => View(await _context.Tblclientes.ToListAsync());
-        
 
     }
 }
