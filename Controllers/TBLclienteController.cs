@@ -44,7 +44,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            Console.WriteLine($"Cliente creado*************************");
+            
 
             return View();
         }
