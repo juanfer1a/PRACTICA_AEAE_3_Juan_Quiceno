@@ -1,11 +1,14 @@
-﻿@model Tblcliente
-
-
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Tblempleado
 
 <div class="container">
-    <h2>Modificar cliente</h2>
+    <h2>Editar empleado</h2>
+    @*<p>Combine .table-dark and .table-striped to create a dark, striped table:</p>*@
 </div>
-
 
 <hr />
 
@@ -13,13 +16,13 @@
 
     <div class="col-md-4">
         <form asp-action="Editar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"> </div>            
-                <label hidden asp-for="IdCliente"></label>
-                <input type="hidden" asp-for="IdCliente" class="form-control"/>         
-            
+            <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+            <label hidden asp-for="IdEmpleado"></label>
+            <input type="hidden" asp-for="IdEmpleado" class="form-control"/>
+
             <div class="form-group">
                 <label asp-for="StrNombre" class="control-label"></label>
-                <input asp-for="StrNombre" class="form-control" />                
+                <input asp-for="StrNombre" class="form-control" />
                 <span asp-validation-for="StrNombre" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,10 +45,25 @@
                 <input asp-for="StrEmail" class="form-control" />
                 <span asp-validation-for="StrEmail" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="IdRolEmpleado" class="control-label"></label>
+                <select asp-for="IdRolEmpleado" class="form-control" asp-items="ViewBag.rol"></select>
+                <span asp-validation-for="IdRolEmpleado" class="text-danger"></span>
+            </div>
+            @*  <div class="form-group">
+            <label asp-for="StrEmail" class="control-label"></label>
+            <input asp-for="StrEmail" class="form-control" />
+            <span asp-validation-for="StrEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="StrEmail" class="control-label"></label>
+            <input asp-for="StrEmail" class="form-control" />
+            <span asp-validation-for="StrEmail" class="text-danger"></span>
+            </div>*@
 
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
-                <a class="btn btn-primary" href="~/TBLcliente">Volver</a>
+                <a class="btn btn-primary" href="~/TBLempleado">Volver</a>
             </div>
         </form>
 

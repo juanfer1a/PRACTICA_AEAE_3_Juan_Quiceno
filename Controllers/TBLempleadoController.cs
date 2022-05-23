@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PRACTICA_AEAE_3_Juan_Quiceno.Models;
 
@@ -18,7 +19,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
 
         public IActionResult Nuevo()
         {
-            //ViewData["Clientes"] = new SelectList(_context.Tblclientes, "idCliente", "StrNombre");
+            ViewData["rol"] = new SelectList(_context.Tblroles, "IdRolEmpleado", "StrDescripcion");
             return View();
         }
 
@@ -26,6 +27,9 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Nuevo(IFormCollection collection)
         {
+
+            ViewData["empleado"] = new SelectList(_context.Tblempleados, "idempleado", "StrNombre");
+
             if (ModelState.IsValid)
             {
                 var NuevoEmpleado = new Tblempleado()
@@ -36,8 +40,8 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
                     StrTelefono = collection["StrTelefono"],
                     StrEmail = collection["StrEmail"],
                     IdRolEmpleado = int.Parse(collection["IdRolEmpleado"]),
-                    DtmIngreso = Convert.ToDateTime(collection["DtmIngreso"]),
-                    DtmRetiro = Convert.ToDateTime(collection["DtmRetiro"]),
+                    DtmIngreso = DateTime.Now.Date,/*Convert.ToDateTime(collection["DtmIngreso"]),*/
+                    DtmRetiro = DateTime.Now.Date,/*Convert.ToDateTime(collection["DtmRetiro"]),*/
                     StrDatosAdicionales = collection["StrDatosAdicionales"],
                     DtmFechaModifica = DateTime.Now.Date,
                     StrUsuarioModifico = "Juan"
@@ -55,6 +59,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
         {
 
             var empleado = await _context.Tblempleados.FindAsync(id);
+            ViewData["rol"] = new SelectList(_context.Tblroles, "IdRolEmpleado", "StrDescripcion", empleado.IdRolEmpleado);
 
             return View(empleado);
         }
@@ -83,8 +88,6 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-
-
 
             return View(model);
         }
