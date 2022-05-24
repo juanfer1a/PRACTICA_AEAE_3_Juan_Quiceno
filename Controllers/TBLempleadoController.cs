@@ -40,8 +40,8 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
                     StrTelefono = collection["StrTelefono"],
                     StrEmail = collection["StrEmail"],
                     IdRolEmpleado = int.Parse(collection["IdRolEmpleado"]),
-                    DtmIngreso = DateTime.Now.Date,/*Convert.ToDateTime(collection["DtmIngreso"]),*/
-                    DtmRetiro = DateTime.Now.Date,/*Convert.ToDateTime(collection["DtmRetiro"]),*/
+                    DtmIngreso = Convert.ToDateTime(collection["DtmIngreso"]),
+                    DtmRetiro = Convert.ToDateTime(collection["DtmRetiro"]),
                     StrDatosAdicionales = collection["StrDatosAdicionales"],
                     DtmFechaModifica = DateTime.Now.Date,
                     StrUsuarioModifico = "Juan"

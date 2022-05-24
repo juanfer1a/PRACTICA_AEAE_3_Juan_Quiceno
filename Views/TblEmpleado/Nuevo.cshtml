@@ -1,8 +1,4 @@
-﻿@*
-                    DtmIngreso = Convert.ToDateTime(collection["DtmIngreso"]),
-                    DtmRetiro = Convert.ToDateTime(collection["DtmRetiro"]),
-                    StrDatosAdicionales = collection["StrDatosAdicionales"],*@
-@{
+﻿@{
     ViewData["Title"] = "Nuevo Empleado";
 }
 @model Tblempleado
@@ -49,16 +45,16 @@
                 <select asp-for="IdRolEmpleado" class="form-control"  asp-items="ViewBag.rol"></select>
                 <span asp-validation-for="IdRolEmpleado" class="text-danger"></span>
             </div>
-          @*  <div class="form-group">
-                <label asp-for="StrEmail" class="control-label"></label>
-                <input asp-for="StrEmail" class="form-control" />
-                <span asp-validation-for="StrEmail" class="text-danger"></span>
+           <div class="form-group">
+                <label asp-for="DtmIngreso" class="control-label"></label>
+                <input asp-for="DtmIngreso" class="form-control" />
+                <span asp-validation-for="DtmIngreso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StrEmail" class="control-label"></label>
-                <input asp-for="StrEmail" class="form-control" />
-                <span asp-validation-for="StrEmail" class="text-danger"></span>
-            </div>*@
+                <label asp-for="DtmRetiro" class="control-label"></label>
+                <input asp-for="DtmRetiro" class="form-control" />
+                <span asp-validation-for="DtmRetiro" class="text-danger"></span>
+            </div>
 
             <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-primary" />
