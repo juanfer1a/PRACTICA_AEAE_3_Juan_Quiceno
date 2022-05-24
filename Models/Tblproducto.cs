@@ -33,9 +33,9 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Models
         [Display(Name = "Stock")]
         public int? NumStock { get; set; }
         public DateTime DtmFechaModifica { get; set; }
-        public string StrUsuarioModifica { get; set; } = null!;
+        public string? StrUsuarioModifica { get; set; } 
 
-        public virtual TblcategoriaProd IdCategoriaNavigation { get; set; } = null!;
+        public virtual TblcategoriaProd? IdCategoriaNavigation { get; set; } 
         public virtual ICollection<TbldetalleFactura> TbldetalleFacturas { get; set; }
     }
 }
