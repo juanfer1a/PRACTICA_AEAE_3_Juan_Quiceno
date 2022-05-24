@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Nuevo Producto";
+}
+
+@model Tblproducto
+
+<div class="container">
+    <h2>Nuevo producto</h2>
+    @*<p>Combine .table-dark and .table-striped to create a dark, striped table:</p>*@
+</div>
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-4">
+        <form asp-action="Nuevo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+           
+            <div class="form-group">
+                <label asp-for="StrNombre" class="control-label"></label>
+                <input asp-for="StrNombre" class="form-control" />
+                <span asp-validation-for="StrNombre" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="StrCodigo" class="control-label"></label>
+                <input asp-for="StrCodigo" class="form-control" />
+                <span asp-validation-for="StrCodigo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumPrecioCompra" class="control-label"></label>
+                <input asp-for="NumPrecioCompra" class="form-control" />
+                <span asp-validation-for="NumPrecioCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumPrecioVenta" class="control-label"></label>
+                <input asp-for="NumPrecioVenta" class="form-control" />
+                <span asp-validation-for="NumPrecioVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCategoria" class="control-label"></label>
+                <select asp-for="IdCategoria" class="form-control" asp-items="ViewBag.categoria"></select>
+                <span asp-validation-for="IdCategoria" class="text-danger"></span>
+            </div>          
+            <div class="form-group">
+                <label asp-for="NumStock" class="control-label"></label>
+                <input asp-for="NumStock" class="form-control" />
+                <span asp-validation-for="NumStock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrDetalle" class="control-label"></label>
+                <input asp-for="StrDetalle" class="form-control" />
+                <span asp-validation-for="StrDetalle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                <a class="btn btn-primary" href="~/TBLproducto">Volver</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

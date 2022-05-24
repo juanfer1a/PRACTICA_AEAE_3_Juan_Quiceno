@@ -28,7 +28,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
         public async Task<IActionResult> Nuevo(IFormCollection collection)
         {
 
-            ViewData["empleado"] = new SelectList(_context.Tblempleados, "idempleado", "StrNombre");
+            //ViewData["empleado"] = new SelectList(_context.Tblempleados, "idempleado", "StrNombre");
 
             if (ModelState.IsValid)
             {
@@ -83,6 +83,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
                 DatosModif.StrDatosAdicionales = model.StrDatosAdicionales;
                 DatosModif.StrUsuarioModifico = "Juan";
                 DatosModif.DtmFechaModifica = DateTime.Now.Date;
+
                 _context.Entry(DatosModif).State = EntityState.Modified;
                 _context.SaveChanges();
 

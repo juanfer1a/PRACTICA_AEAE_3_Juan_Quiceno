@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PRACTICA_AEAE_3_Juan_Quiceno.Models;
 
@@ -17,7 +18,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
 
         public IActionResult Nuevo()
         {
-            //ViewData["Clientes"] = new SelectList(_context.Tblclientes, "idCliente", "StrNombre");
+            ViewData["categoria"] = new SelectList(_context.TblcategoriaProds,"IdCategoria", "StrDescripcion");
             return View();
         }
 
@@ -25,6 +26,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Nuevo(IFormCollection collection)
         {
+
             if (ModelState.IsValid)
             {
                 var NuevoProducto = new Tblproducto()
@@ -35,7 +37,9 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
                     NumPrecioVenta = long.Parse(collection["NumPrecioVenta"]),
                     IdCategoria = int.Parse(collection["IdCategoria"]),
                     StrDetalle = collection["StrDetalle"],
-                    NumStock = int.Parse(collection["NumStock"])
+                    NumStock = int.Parse(collection["NumStock"]),
+                    DtmFechaModifica = DateTime.Now.Date,
+                    StrUsuarioModifica = "Juan"
 
                 };
                 _context.Add(NuevoProducto);
@@ -49,6 +53,7 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
         {
 
             var producto = await _context.Tblproductos.FindAsync(id);
+            ViewData["categoria"] = new SelectList(_context.TblcategoriaProds, "IdCategoria", "StrDescripcion", producto.IdCategoria);
 
             return View(producto);
         }
@@ -67,15 +72,14 @@ namespace PRACTICA_AEAE_3_Juan_Quiceno.Controllers
                 DatosModif.IdCategoria = model.IdCategoria;
                 DatosModif.StrDetalle = model.StrDetalle;
                 DatosModif.NumStock = model.NumStock;
-                DatosModif.StrUsuarioModifica = "Juan";
                 DatosModif.DtmFechaModifica = DateTime.Now.Date;
+                DatosModif.StrUsuarioModifica = "Juan";
+
                 _context.Entry(DatosModif).State = EntityState.Modified;
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
-
-
 
             return View(model);
         }
